@@ -1,0 +1,38 @@
+.tabs {
+  width: 450px;
+  height: 50px;
+  padding: 50px;
+  position: relative;
+  display: flex;
+
+  .tab {
+    width: 150px;
+    height: 50px;
+    color: gray;
+    font-weight: 700;
+    cursor: pointer;
+    border-bottom: 1.5px solid rgb(235, 235, 235);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.1s ease-in;
+  }
+
+  .radioTab {
+    display: none;
+  }
+
+  input[type="radio"]:checked + .tab {
+    color: black;
+  }
+
+  .slider {
+    width: 150px;
+    height: 2px;
+    top: 100px;
+    position: absolute;
+    background-color: #10aeaf;
+    border-radius: 1px;
+    transition: 0.2s ease-out;
+  }
+}
