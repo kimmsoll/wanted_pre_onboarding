@@ -1,0 +1,119 @@
+@mixin rangeThumb {
+  width: 15px;
+  height: 15px;
+  margin: -8px 0 0;
+  border-radius: 50%;
+  background-color: #37adbf;
+  outline: 4px solid white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px 5px,
+    rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+  cursor: pointer;
+}
+
+@mixin rangeTrack {
+  height: 3px;
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.slider {
+  width: 400px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  .valueContainer {
+    height: 50px;
+    font-weight: 700;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .percentage {
+      padding: 0 25px;
+      font-size: 14px;
+      color: gray;
+    }
+  }
+  .valueSlider {
+    position: relative;
+    padding: 20px 0 15px 0;
+    .valueRange {
+      position: absolute;
+      width: 100%;
+      height: 0px;
+      background: none;
+      outline: none;
+      -webkit-appearance: none;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        @include rangeThumb;
+      }
+      &::-moz-range-thumb {
+        @include rangeThumb;
+      }
+      &::-ms-thumb {
+        @include rangeThumb;
+      }
+      &::-webkit-slider-runnable-track {
+        @include rangeTrack;
+      }
+      &::-moz-range-track {
+        @include rangeTrack;
+      }
+      &::-ms-track {
+        @include rangeTrack;
+      }
+      &::-ms-track {
+        // A little somethin' somethin' for IE
+        width: 100%;
+        cursor: pointer;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .valueStep {
+    width: 430px;
+    padding: 0;
+    margin: 0;
+    margin-left: -14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    .step {
+      list-style: none;
+      width: 40px;
+      height: 20px;
+      font-size: 12px;
+      border-radius: 10px;
+      background-color: lightgray;
+      color: gray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &::before {
+        position: absolute;
+        top: -20px;
+        content: "";
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: lightgray;
+        z-index: -1;
+      }
+      &:hover {
+        color: white;
+        background-color: #10aeaf;
+      }
+    }
+  }
+}

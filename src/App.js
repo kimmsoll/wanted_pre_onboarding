@@ -1,6 +1,7 @@
 import React from 'react';
 import Toggle from './components/Toggle/Toggle';
 import Tab from './components/Tab/Tab';
+import Slider from './components/Slider/Slider';
 import Input from './components/Input/Input';
 import Dropdown from './components/Dropdown/Dropdown';
 
@@ -20,6 +21,7 @@ const App = () => {
         <>
         <Toggle />
         <Tab />
+        <Slider />
         <Input />
         <Dropdown searchData={searchData}/>
         </>
