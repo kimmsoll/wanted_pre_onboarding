@@ -38,7 +38,7 @@ const Dropdown = ({ searchData }) => {
                 </div>
                 <ul className={styles.optionList}>
                     {isSearched !== '' && isClicked ?
-                    searchData.filter((v, idx) =>
+                    searchData.map((v, idx) =>
                     new RegExp(isSearched, 'gi').test(v) &&
                     <li
                         key={idx}
