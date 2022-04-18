@@ -6,6 +6,7 @@ import Input from './components/Input/Input';
 import Dropdown from './components/Dropdown/Dropdown';
 
 const App = () => {
+    const menus = ['감자', '고구마', '카레라이스'];
     const searchData = [
         'All Symbols',
         'BTCUSD.PERP',
@@ -20,7 +21,7 @@ const App = () => {
     return (
         <>
         <Toggle />
-        <Tab />
+        <Tab menus={menus}/>
         <Slider />
         <Input />
         <Dropdown searchData={searchData}/>

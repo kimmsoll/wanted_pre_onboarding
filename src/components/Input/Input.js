@@ -6,9 +6,10 @@ const Input = () => {
     const [activeBorder, setActiveBorder] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+
     const handleCorrect = (e) => {
         setIsEmailValue(() => e.target.value);
-        const re = new RegExp(/^[a-zA-Z0-9]([\w._-])([a-zA-Z0-9])+([\w._-])+@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,8}$/i);
+        const re = new RegExp(/^[a-z0-9]([\w._-])([a-z0-9])+([\w._-])+@([a-z0-9]+\.)+[a-z0-9]{2,8}$/i);
         if (re.test(emailValue)) {
             setIsCorrect(true);
         } else {
@@ -18,6 +19,7 @@ const Input = () => {
     const handleView = () => {
         setIsVisible((state) => !state);
     }
+    
     return (
         <div className={styles.input}>
             <div className={styles.emailForm}>

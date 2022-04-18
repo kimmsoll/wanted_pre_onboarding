@@ -17,6 +17,7 @@ const Dropdown = ({ searchData }) => {
     const handleSearch = (e) => {
         setIsSearched(() => e.target.value);
     }
+    
     return (
         <div className={styles.dropDown} id="dropDown">
             <div className={styles.select} onClick={() => handleClick()}>
@@ -37,7 +38,7 @@ const Dropdown = ({ searchData }) => {
                 </div>
                 <ul className={styles.optionList}>
                     {isSearched !== '' && isClicked ?
-                    searchData.map((v, idx) =>
+                    searchData.filter((v, idx) =>
                     new RegExp(isSearched, 'gi').test(v) &&
                     <li
                         key={idx}

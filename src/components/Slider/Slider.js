@@ -3,6 +3,8 @@ import styles from './slider.module.scss';
 
 const Slider = () => {
     const [isSelected, setIsSelected] = useState(1);
+    const steps = [1, 25, 50, 75, 100];
+
     const handleChange = (e) => {
         const value = e.target.value;
         setIsSelected(() => value);
@@ -11,6 +13,7 @@ const Slider = () => {
         const target = e.target.innerText.slice(0, -1);
         setIsSelected(() => target);
     }
+
     return (
         <div className={styles.slider}>
             <div className={styles.valueContainer}>
@@ -29,21 +32,12 @@ const Slider = () => {
                     onChange={(e) => handleChange(e)} />
             </div>
             <ul className={styles.valueStep}>
+            {steps.map((step, idx) => 
                 <li
+                key={idx}
                 onClick={(e) => handleClick(e)}
-                className={styles.step}>1%</li>
-                <li
-                onClick={(e) => handleClick(e)}
-                className={styles.step}>25%</li>
-                <li
-                onClick={(e) => handleClick(e)}
-                className={styles.step}>50%</li>
-                <li
-                onClick={(e) => handleClick(e)}
-                className={styles.step}>75%</li>
-                <li
-                onClick={(e) => handleClick(e)}
-                className={styles.step}>100%</li>
+                className={styles.step}>{step}%</li>
+            )}
             </ul>
         </div>
     );

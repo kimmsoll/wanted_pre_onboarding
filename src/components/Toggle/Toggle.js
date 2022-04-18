@@ -3,9 +3,11 @@ import styles from './toggle.module.scss';
 
 const Toggle = () => {
     const [isChecked, setIsChecked] = useState(false);
+
     const handleToggle = () => {
         setIsChecked((state) => !state);
     }
+    
     return (
         <div className={styles.toggle}>
             <label className={styles.toggleLabel}>
