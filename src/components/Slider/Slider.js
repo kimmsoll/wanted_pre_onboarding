@@ -4,7 +4,7 @@ import styles from './slider.module.scss';
 const Slider = () => {
     const [isSelected, setIsSelected] = useState(1);
     const steps = [1, 25, 50, 75, 100];
-
+    
     const handleChange = (e) => {
         const value = e.target.value;
         setIsSelected(() => value);
@@ -29,7 +29,23 @@ const Slider = () => {
                     value={isSelected}
                     min="1"
                     max="100"
-                    onChange={(e) => handleChange(e)} />
+                    onChange={(e) => handleChange(e)}
+                    style={{
+                        background: `linear-gradient(
+                            to right,
+                            #37adbf 0%,
+                            #37adbf ${isSelected}%,
+                            lightgray ${isSelected}%,
+                            lightgray 100%)`
+                    }}
+                />
+                <div className={styles.dots}>
+                {steps.map((v) => 
+                    isSelected >= v ?
+                    <div key={v} className={`${styles.dot} ${styles.colored}`} />
+                    : <div key={v} className={styles.dot} />
+                )}
+                </div>
             </div>
             <ul className={styles.valueStep}>
             {steps.map((step, idx) => 

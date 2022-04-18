@@ -1,7 +1,7 @@
 @mixin rangeThumb {
   width: 15px;
   height: 15px;
-  margin: -8px 0 0;
+  margin: -6px 0 0;
   border-radius: 50%;
   background-color: #37adbf;
   outline: 4px solid white;
@@ -11,13 +11,13 @@
 }
 
 @mixin rangeTrack {
-  height: 3px;
-  background-color: lightgray;
+  height: 4px;
+  border-radius: 1.5px;
   cursor: pointer;
 }
 
 .slider {
-  width: 400px;
+  width: 350px;
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -38,17 +38,15 @@
   }
   .valueSlider {
     position: relative;
-    padding: 20px 0 15px 0;
+    padding: 20px 0 30px 0;
     .valueRange {
       position: absolute;
       width: 100%;
-      height: 0px;
-      background: none;
       outline: none;
+      background: none;
       -webkit-appearance: none;
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
-        appearance: none;
         @include rangeThumb;
       }
       &::-moz-range-thumb {
@@ -67,7 +65,6 @@
         @include rangeTrack;
       }
       &::-ms-track {
-        // A little somethin' somethin' for IE
         width: 100%;
         cursor: pointer;
         background: transparent;
@@ -79,11 +76,28 @@
       }
     }
   }
+  .dots {
+    top: 14px;
+    width: 120%;
+    display: flex;
+    justify-content: space-around;
+    margin-left: -35px;
+    position: absolute;
+    z-index: -1;
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: lightgray;
+      &.colored {
+        background-color: #37adbf;
+      }
+    }
+  }
   .valueStep {
-    width: 430px;
+    width: 100%;
     padding: 0;
     margin: 0;
-    margin-left: -14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -100,19 +114,9 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      &::before {
-        position: absolute;
-        top: -20px;
-        content: "";
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background: lightgray;
-        z-index: -1;
-      }
       &:hover {
         color: white;
-        background-color: #10aeaf;
+        background-color: #37adbf;
       }
     }
   }
