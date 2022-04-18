@@ -22,7 +22,7 @@
     display: none;
   }
 
-  input[type="radio"]:checked + .tab {
+  .radioTab:checked + .tab {
     color: black;
   }
 
