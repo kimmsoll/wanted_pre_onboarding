@@ -18,9 +18,10 @@
 
 .slider {
   width: 350px;
-  padding: 50px;
+  padding: 50px 100px;
   display: flex;
   flex-direction: column;
+
   .valueContainer {
     height: 50px;
     font-weight: 700;
@@ -36,6 +37,7 @@
       color: gray;
     }
   }
+
   .valueSlider {
     position: relative;
     padding: 20px 0 30px 0;
@@ -76,6 +78,7 @@
       }
     }
   }
+
   .dots {
     top: 14px;
     width: 120%;
@@ -94,6 +97,7 @@
       }
     }
   }
+
   .valueStep {
     width: 100%;
     padding: 0;
