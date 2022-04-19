@@ -49,14 +49,14 @@
 
 - 선택된 값(isSelected)의 상태를 관리하여, input 에 change 이벤트가 발생할 경우, 하단의 수치 클릭 이벤트가 발생할 경우 상단에 실시간으로 값을 보여주도록 했습니다.
 - steps 배열을 생성하여 각 step 과 isSelected 의 값을 비교함으로써 색상을 변경할 수 있게 했습니다.
-- slider thumb CSS를 outline, box-shadow 를 통해 구현했습니다.
+- slider thumb CSS를 box-shadow 를 통해 구현했습니다.
 - mixin 을 사용하여 크로스 브라우징 CSS를 작성했습니다.
 
 > 구현 고민
 
 - 개인적으로 다섯 문항 중 CSS가 가장 까다로웠습니다. 처음엔 dots 태그를 따로 만들지 않고, ::before 를 통해 가상 요소를 생성하여 작업했으나, 값 변화에 따른 색상 변경이 어려웠습니다. dots 를 div 태그로 따로 생성하여 작업함으로써 애니매이션을 구현할 수 있었습니다.
 - dots 간격을 맞추기가 쉽지 않아서, margin 으로 해결했습니다.
-- slider thumb 크기가 border 조절로 커질 수 없다는 걸 깨닫고, outline 과 box-shadow 를 사용했습니다.
+- slider thumb 크기가 border 조절로 커질 수 없다는 것과, outline에는 border-radius가 적용되지 않는다는 사실을 알게 되었습니다. box-shadow로 border, outline 을 대체하였습니다.
 
 #### **_4. Input.js_**
 
