@@ -11,6 +11,11 @@
 
 - svg 파일로 생성한 아이콘을 사용했습니다. 이미지 파일에 비해 훨씬 작은 용량과, svg 파일 자체에서 CSS를 수정해 재사용성을 높일 수 있다는 장점이 있었습니다.
 
+#### **netlify**
+
+- 정적 사이트를 원하는 url로 쉽게 배포해주는 netlify를 통해 배포했습니다.
+  https://wanted-pre-onboarding-frontend.netlify.app/
+
 ---
 
 ### 2. 구현
