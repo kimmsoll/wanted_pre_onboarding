@@ -2,11 +2,11 @@
   width: 15px;
   height: 15px;
   margin: -6px 0 0;
+  border: none;
   border-radius: 50%;
   background-color: #37adbf;
-  outline: 4px solid white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px 5px,
-    rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 4px,
+    rgba(0, 0, 0, 0.16) 0px 2px 6px 4px;
   cursor: pointer;
 }
 
@@ -45,6 +45,7 @@
       position: absolute;
       width: 100%;
       outline: none;
+      border: none;
       background: none;
       -webkit-appearance: none;
       &::-webkit-slider-thumb {
