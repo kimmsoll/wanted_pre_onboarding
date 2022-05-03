@@ -11,13 +11,13 @@ const Dropdown = ({ searchData }) => {
   }
   
   const handleSelect = (e) => {
-    setIsSelected(e.target.innerText);
+    setIsSelected(e.currentTarget.innerText);
     setIsClicked(false);
     setIsSearched('');
   }
   
   const handleSearch = (e) => {
-    setIsSearched(e.target.value);
+    setIsSearched(e.currentTarget.value);
   }
   
   return (

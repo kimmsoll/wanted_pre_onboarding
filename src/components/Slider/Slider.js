@@ -7,12 +7,12 @@ const Slider = () => {
   const stepPoint = '%';
 
   const handleChange = (e) => {
-    const value = e.target.value;
+    const value = e.currentTarget.value;
     setIsSelected(value);
   }
   
   const handleClick = (e) => {
-    const target = e.target.value;
+    const target = e.currentTarget.value;
     setIsSelected(steps[target]);
   }
 

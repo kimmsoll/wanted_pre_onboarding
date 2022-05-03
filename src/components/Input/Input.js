@@ -8,7 +8,7 @@ const Input = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleCorrect = (e) => {
-    setEmailValue(e.target.value);
+    setEmailValue(e.currentTarget.value);
     const re = new RegExp(/^[a-z0-9]([\w._-])([a-z0-9])+([\w._-])+@([a-z0-9]+\.)+[a-z0-9]{2,8}$/i);
     if (re.test(emailValue)) {
         setIsCorrect(true)

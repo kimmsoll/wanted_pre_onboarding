@@ -6,7 +6,7 @@ const Tab = ({ menus }) => {
   const DISTANCE = 150;
 
   const handleSelect = (e) => {
-      setMove(`translateX(${e.target.id * DISTANCE}px)`);
+      setMove(`translateX(${e.currentTarget.id * DISTANCE}px)`);
   };
   
   return (
