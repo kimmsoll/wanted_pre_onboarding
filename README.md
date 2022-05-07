@@ -110,5 +110,6 @@
 
   > handleView -> handleTogglePassword
 - index 값을 사용하지 않기 위해 데이터 값을 수정했습니다
+- innerText 를 사용하지 않기 위해 dataset 을 사용하여 수정했습니다
 - 데이터를 상위 컴포넌트에서 props 로 넘겨 받도록 수정하여, propTypes 를 적용했습니다
 - 불필요한 코드 중복을 없앴습니다
