@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
-import styles from './dropdown.module.scss';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
+import styles from './dropdown.module.scss'
 
-const Dropdown = ({ searchData }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const [isSelected, setIsSelected] = useState('All Symbols');
-  const [isSearched, setIsSearched] = useState('');  
+function Dropdown({ searchData }) {
+  const [isClicked, setIsClicked] = useState(false)
+  const [isSelected, setIsSelected] = useState('All Symbols')
+  const [isSearched, setIsSearched] = useState('')  
 
   const handleClick = () => {
-    setIsClicked((isClicked) => !isClicked);
+    setIsClicked((isClicked) => !isClicked)
   }
   
   const handleSelect = (e) => {
-    setIsSelected(e.currentTarget.innerText);
-    setIsClicked(false);
-    setIsSearched('');
+    const { currentTarget : {innerText} } = e
+    setIsSelected(innerText)
+    setIsClicked(false)
+    setIsSearched('')
   }
   
   const handleSearch = (e) => {
-    setIsSearched(e.currentTarget.value);
+    const { currentTarget : {value} } = e
+    setIsSearched(value)
   }
   
   return (
     <div className={styles.dropDown} id="dropDown">
-      <div className={styles.select} onClick={handleClick}>
+      <div className={styles.select} onClick={handleClick} aria-hidden="true">
         <span>{isSelected}</span>
-        <button className={styles.selectBtn}></button>
+        <button className={styles.selectBtn} aria-label="selectBtn" type="button" />
       </div>
       {isClicked &&
       <div className={styles.options}>
@@ -36,32 +39,36 @@ const Dropdown = ({ searchData }) => {
             value={isSearched}
             onChange={handleSearch}
           />
-          <button className={styles.searchIcon} />
+          <button className={styles.searchIcon} aria-label="searchBtn" type="button" />
         </div>
         <ul className={styles.optionList}>
-        {isSearched !== '' && isClicked ?
-          searchData.map((v, idx) =>
-            new RegExp(isSearched, 'gi').test(v) &&
-            <li
-              key={`search-data-${idx}`}
+        {searchData.map((v) => {
+          const { id, text } = v
+          const matched = isSearched !== '' && isClicked ?
+          new RegExp(isSearched, 'gi').test(text) : true
+          return matched &&
+            (<li
+              key={id}
               className={styles.option}
               onClick={handleSelect}
-            >{v}</li>
-          )
-          :
-          searchData.map((v, idx) =>
-            <li
-              key={`search-data-${idx}`}
-              className={styles.option}
-              onClick={handleSelect}
-            >{v}</li>
-          )
+              role="presentation"
+            >{text}</li>)
+          })
         }
         </ul>
       </div>
       }
     </div>
-  );
+  )
 }
 
-export default Dropdown;
+Dropdown.propTypes = {
+  searchData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id : PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired
+    })
+  )
+}
+
+export default Dropdown

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import styles from './toggle.module.scss';
+import { useState } from 'react'
+import styles from './toggle.module.scss'
 
-const Toggle = () => {
-  const [isChecked, setIsChecked] = useState(false);
+function Toggle() {
+  const [isChecked, setIsChecked] = useState(false)
   
   const handleToggle = () => {
-    setIsChecked((state) => !state);
+    setIsChecked((state) => !state)
   }
   
   return (
@@ -21,16 +21,16 @@ const Toggle = () => {
         <div className={styles.toggleTexts}>
           <span
             style={{ color: isChecked ? 'gray' : 'black' }}
-            className={styles.textLeft}
+            className={styles.defaultMode}
           >기본</span>
           <span
             style={{ color: isChecked ? 'black' : 'gray'}}
-            className={styles.textRight}
+            className={styles.detailMode}
           >상세</span>
         </div>
       </label>
     </div>
-  );
+  )
 }
 
-export default Toggle;
+export default Toggle

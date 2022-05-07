@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
-import styles from './slider.module.scss';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
+import styles from './slider.module.scss'
 
-const Slider = () => {
-  const [isSelected, setIsSelected] = useState(1);
-  const steps = [1, 25, 50, 75, 100];
-  const stepPoint = '%';
+function Slider({ steps }) {
+  const [isSelected, setIsSelected] = useState(1)
 
   const handleChange = (e) => {
-    const value = e.currentTarget.value;
-    setIsSelected(value);
+    const { currentTarget : {value} } = e
+    setIsSelected(value)
   }
   
   const handleClick = (e) => {
-    const target = e.currentTarget.value;
-    setIsSelected(steps[target]);
+    const { currentTarget : { dataset : {step} } } = e
+    setIsSelected(step)
   }
 
   return (
     <div className={styles.slider}>
       <div className={styles.valueContainer}>
         <span>{isSelected}</span>
-        <span className={styles.percentage}>{stepPoint}</span>
+        <span className={styles.percentage}>%</span>
       </div>
       <div className={styles.valueSlider}>
         <input
@@ -42,24 +41,37 @@ const Slider = () => {
           }}
         />
         <div className={styles.dots}>
-        {steps.map((v) => 
-          isSelected >= v ?
-          <div key={v} className={`${styles.dot} ${styles.colored}`} />
-          : <div key={v} className={styles.dot} />
-        )}
+        {steps.map((v) => {
+          const { id, step } = v
+          return (isSelected >= step ?
+          <div key={id} className={`${styles.dot} ${styles.colored}`} />
+          : <div key={id} className={styles.dot} />)
+        })}
         </div>
       </div>
       <ul className={styles.valueStep}>
-      {steps.map((step, idx) => 
-        <li
-        key={`step-data${idx}`}
-        value={idx}
-        onClick={handleClick}
-        className={styles.step}>{step}{stepPoint}</li>
-      )}
+        {steps.map((v) => {
+          const { id, step } = v
+          return (<li
+          key={id}
+          className={styles.step}
+          onClick={handleClick}
+          role="presentation"
+          data-step={step}
+          >{step}%</li>)
+        })}
       </ul>
     </div>
-  );
+  )
 }
 
-export default Slider;
+Slider.propTypes = {
+  steps : PropTypes.arrayOf(
+    PropTypes.shape({
+      id : PropTypes.number.isRequired,
+      step: PropTypes.number.isRequired
+    })
+  )
+}
+
+export default Slider

@@ -38,8 +38,8 @@
     z-index: 1;
     height: 100%;
     font-weight: 700;
-    .textLeft,
-    .textRight {
+    .defaultMode,
+    .detailMode {
       width: 50%;
       height: 100%;
       position: absolute;
@@ -47,10 +47,10 @@
       align-items: center;
       justify-content: center;
     }
-    .textLeft {
+    .defaultMode {
       left: 0;
     }
-    .textRight {
+    .detailMode {
       right: 0;
     }
   }
